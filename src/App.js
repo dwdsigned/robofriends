@@ -4,11 +4,6 @@ import { robots } from './robots'
 import SearchBox from "./SearchBox"
 import Scroll from "./Scroll"
 
-// const state = {
-//     robots: robots,
-//     searchfield: ""
-// }
-
 class App extends Component {
     constructor() {
         super()
@@ -20,18 +15,11 @@ class App extends Component {
 
     componentDidMount() {
         fetch("https://jsonplaceholder.typicode.com/users").then(response => response.json()).then(users => this.setState({ robots: robots}));
-        
     }
 
     onSearchChange = (event) => {
         this.setState({searchfield: event.target.value})
-    //     // console.log(event.target.value);
-    //     const filteredRobots = this.state.robots.filter(robot =>{
-    //     return robot.name.toLowerCase().includes(this.state.searchfield);
-    // })
-    // console.log(filteredRobots);
     }
-
 
     render() {
         const filteredRobots = this.state.robots.filter(robot =>{
@@ -45,19 +33,9 @@ class App extends Component {
                 <Scroll>
                     <CardList robots={filteredRobots}/>
                     </Scroll>
-               
-
             </div>
         );
         }
-    
 }
-
-
-
-
-
-
-
 
 export default App;
